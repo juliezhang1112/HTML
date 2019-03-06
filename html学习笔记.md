@@ -122,11 +122,11 @@ keywords: 为文档定义一组关键字，某些搜索引擎在遇到这些关�
 
 该meta标签作用：让当前viewpoint的宽度等于移动设备的宽度，同时不允许用户手动缩放，否则就会出现横向滚动条。
 
-![](image/layout_viewpoint.png)
+![](https://github.com/juliezhang1112/html/blob/master/image/layout_viewpoint.png)
 
 <center><em>layout viewpoint<em></center>
 
-![](image/visual_viewpoint.png)
+![](https://github.com/juliezhang1112/html/blob/master/image/visual_viewpoint.png)
 
 <center><em>visual viewpoint<em></center>
 
@@ -137,9 +137,9 @@ keywords: 为文档定义一组关键字，某些搜索引擎在遇到这些关�
 
 理想情况：一段14px的文字、图片无论是在何种密度屏幕，何种分辨率下，显示出来的大小都差不多。ideal viewport没有一个固定的尺寸，不同的设备各不相同。所有的iphone的ideal viewport宽度都是320px，无论屏幕宽度是320还是640，也就是说，在iphone中，css中的320px就代表iphone屏幕的宽度。
 
-![](image/320px.png)
+![](https://github.com/juliezhang1112/html/blob/master/image/320px.png)
 
-![](image/640px.png)
+![](https://github.com/juliezhang1112/html/blob/master/image/640px.png)
 
 
 
@@ -200,7 +200,7 @@ article：
 
 HTML 元素指的是从开始标签（start tag）到结束标签（end tag）的所有代码。
 
-![](image/element.png)
+![](https://github.com/juliezhang1112/html/blob/master/image/element.png)
 
 **语法：**
 
