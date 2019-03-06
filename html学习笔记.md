@@ -122,7 +122,7 @@ keywords: 为文档定义一组关键字，某些搜索引擎在遇到这些关�
 
 该meta标签作用：让当前viewpoint的宽度等于移动设备的宽度，同时不允许用户手动缩放，否则就会出现横向滚动条。
 
-![layout viewpoint](http://github.com/juliezhang1112/image/layout viewpoint.png)
+![layout viewpoint](https://github.com/juliezhang1112/html/image/layout viewpoint.png)
 
 <center><em>layout viewpoint<em></center>
 
@@ -130,7 +130,7 @@ keywords: 为文档定义一组关键字，某些搜索引擎在遇到这些关�
 
 <center><em>visual viewpoint<em></center>
 
-***ideal viewpoint***
+**ideal viewpoint**
 
 1. 不需要用户缩放和横向滚动就能正常查看网站所有内容
 2. 显示合适的文字大小
