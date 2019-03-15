@@ -802,4 +802,3 @@ ubuntu server16.01.1 LTS 64位 Apache
 
 通过ftp上传之后，在命令行敲`sudo mv ~/h1/index.html /var/www/html`
 
-
