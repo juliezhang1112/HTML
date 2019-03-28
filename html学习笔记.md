@@ -6,31 +6,52 @@ HTML 是用来描述网页的一种语言。HTML 指的是超文本标记语言 
 
 HTML 不是一种编程语言，而是一种标记语言(markup language)，标记语言是一套标记标签(markup tag)，HTML 使用标记标签来描述网页。
 
+## HTML元素
+
+HTML 元素指的是从开始标签（start tag）到结束标签（end tag）的所有代码。
+
+![](image/element.png)
+
+**语法：**
+
+- 没有内容的HTML元素称为空元素，如\<br>（定义换行）\<img>，在开始标签中添加斜杠，比如\<br />，是关闭空元素的正确方法，HTML、XHTML 和 XML 都接受这种方式。
+- HTML 标签对大小写不敏感：\<P> 等同于\<p>。许多网站都使用大写的 HTML 标签。万维网联盟（W3C）在 HTML 4 中*推荐*使用小写，而在未来 (X)HTML 版本中*强制*使用小写。
+
 ## HTML标签
 
 HTML 标记标签通常被称为 HTML 标签 (HTML tag)，是由尖括号包围的关键词，通常成对出现，比如 \<b> 和\</b>。标签对中的第一个标签是开始标签（开放标签），第二个标签是结束标签（闭合标签）。
 
 **HTML文档=网页**
 
-```
+```html
+<!DOCTYPE html>
 <html>
-<body>
-
-<h1>一个标题</h1>
-
-<p>一个段落</p>
-
-</body>
+	<head>
+		<meat charset="utf-8">
+		<title>test</title>
+	</head>
+	<body>
+		<h1>一个标题</h1>
+		<p>一个段落</p>
+	</body>
 </html>
 ```
 
-\<html>\</html>之间的内容描述网页
+\<!DOCTYPE html>文档类型。
 
-\<body>\</body>之间文本是可见的页面内容
+\<html>\</html>之间的内容描述网页，称为根元素。
 
-标题（Heading）通过\<h1>-\<h6>定义。
+\<head>\</head>不展现给用户，包含例如面向搜索引擎的搜索关键字、页面描述、CSS样式表和字符编码声明等。
 
-```
+\<meta charset="utf-8"> 当前文档使用 UTF-8 字符编码。
+
+\<body>\</body>之间文本是可见的页面内容，可以是文本、图像、视频、游戏、可播放的音轨等。
+
+
+
+标题（Heading）通过\<h1>-\<h6>定义，一般用到最多3-4级标题。
+
+```html
 <h1>标题一</h1>
 <h2>标题二</h2>
 <h3>标题三</h3>
@@ -40,21 +61,34 @@ HTML 标记标签通常被称为 HTML 标签 (HTML tag)，是由尖括号包围�
 
 \<p>是块级元素
 
-```
+```html
 <p>段落内容</p>
 ```
 
+列表：
+
+标记列表通常包括至少两个元素。最常用的列表类型为：
+
+1. 无序列表（Unordered List）中项目的顺序并不重要，就像购物列表。用一个\<ul>元素包围。
+2. 有序列表（Ordered List）中项目的顺序很重要，就像烹调指南。用一个\<ol>元素包围。
+
+列表的每个项目用一个列表项目（List Item）元素\<li>包围。
+
 链接：
 
-```
+href=hypertext reference超文本引用
+
+```html
 <a href="http://pku.edu.cn">北大官网</a>
 ```
 
 图像：
 
+```html
+<img src="index.jpg" alt="测试图片" width="100" height="200">
 ```
-<img src="index.jpg" width="100" height="200"/>
-```
+
+`alt` :图像的描述内容，用于当图像不能被用户看见时显示，不可见的原因可能是：1. 用户有视觉障碍。视障用户可以使用屏幕阅读器来朗读 `alt` 属性的内容。2. 有些错误使图像无法显示。`alt` 属性的关键字即“描述文本”。
 
 图像的名称和尺寸为属性形式。
 
@@ -62,11 +96,9 @@ HTML 标记标签通常被称为 HTML 标签 (HTML tag)，是由尖括号包围�
 
 **其他常用标签**：
 
-水平线：
+水平线：用于分隔内容
 
-用于分隔内容
-
-```
+```html
 <p>我是段落1</p>
 
 <hr />
@@ -76,13 +108,13 @@ HTML 标记标签通常被称为 HTML 标签 (HTML tag)，是由尖括号包围�
 
 注释：
 
-```
+```html
 <!--我是注释-->
 ```
 
 换行：
 
-```
+```html
 <p>这是<br />一个带换行<br />的段落</p>
 ```
 
@@ -108,13 +140,13 @@ name属性
 
 keywords: 为文档定义一组关键字，某些搜索引擎在遇到这些关键字时，会用这些关键字对文档进行分类。
 
-```
+```html
 <meta name="keywords" content="HTML,ASP,PHP,SQL">
 ```
 
 
 
-```
+```html
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 ```
 
@@ -171,7 +203,7 @@ section：
 
 - 定义：文档中的节，一般带有标题。
 
-- ```
+- ```html
   <section>
   	<h1>我是标题</h1>
   	<p>我是段落</p>
@@ -196,16 +228,7 @@ article：
 
 无法通过在HTML里中添加额外的空格或换行来改变输出的效果，显示页面时，浏览器会移除源代码中多余的空格和空行。
 
-# HTML元素
 
-HTML 元素指的是从开始标签（start tag）到结束标签（end tag）的所有代码。
-
-![](./image/element.png)
-
-**语法：**
-
-- 没有内容的HTML元素称为空元素，如\<br>（定义换行），在开始标签中添加斜杠，比如\<br />，是关闭空元素的正确方法，HTML、XHTML 和 XML 都接受这种方式。
-- HTML 标签对大小写不敏感：\<P> 等同于\<p>。许多网站都使用大写的 HTML 标签。万维网联盟（W3C）在 HTML 4 中*推荐*使用小写，而在未来 (X)HTML 版本中*强制*使用小写。
 
 # HTML属性
 
@@ -234,7 +257,7 @@ style属性：一种改变所有HTML元素的样式的通用方法。通过HTML�
 
 **实例-背景颜色**
 
-```
+```html
 <html>
 
 <body style="background-color:yellow">
@@ -251,7 +274,7 @@ style属性：一种改变所有HTML元素的样式的通用方法。通过HTML�
 
 **实例-字体、颜色、尺寸**
 
-```
+```html
 <html>
 
 <body>
@@ -268,7 +291,7 @@ style属性：一种改变所有HTML元素的样式的通用方法。通过HTML�
 
 **实例-文本对齐**
 
-```
+```html
 <html>
 
 <body>
@@ -287,7 +310,7 @@ style属性：一种改变所有HTML元素的样式的通用方法。通过HTML�
 
 **文本格式化：**
 
-```
+```html
 <html>
 <body>
 
@@ -325,7 +348,7 @@ This text contains
 
 **”计算机输出“标签：**常用于显示计算机/编程代码
 
-```
+```html
 <code>computer code计算机代码</code>
 <kbd>keyboard input键盘码</kbd>
 <tt>teletype text打字机代码</tt>
@@ -337,7 +360,7 @@ This text contains
 
 **地址：**
 
-```
+```html
 <address>
 Written by <a href="mailto:webmaster@example.com">Donald Duck</a>.<br> 
 Visit us at:<br>
@@ -349,7 +372,7 @@ USA
 
 **缩写和首字母缩写：**
 
-```
+```html
 <abbr title="etcetera">etc.</abbr>
 <acronym title="World Wide Web">WWW</acronym>
 <!--某些浏览器中，将鼠标移至缩略词上时，title可用于展示表达的完整版，仅对IE5中的acronym元素有效。对于Netscape6.2中的abbr和acronym都有效。-->
@@ -359,7 +382,7 @@ USA
 
 bi-directional override(bdo)双流向覆盖
 
-```
+```html
 <bdo dir="rtl">
 我喜欢你，就像你妈打你，不讲道理。
 </bdo>
@@ -373,7 +396,7 @@ bi-directional override(bdo)双流向覆盖
 
 **块引用：**
 
-```
+```html
 引自鲁迅：
 <blockquote>
 这是长的引用。浏览器会插入换行和外边距。
@@ -387,14 +410,14 @@ bi-directional override(bdo)双流向覆盖
 
 **删除字效果和插入字效果：**
 
-```
+```html
 <p>一打有<del>二十</del><ins>十二</ins>个。</p>
 <!--大多数浏览器会改为删除文本和下划线文本，一些老式浏览器显示为普通文本。-->
 ```
 
 # HTML引用
 
-```
+```html
 1.<q> 
 <p>我的心愿是：<q>世界和平。</q></p>
 
@@ -423,7 +446,7 @@ bi-directional override(bdo)双流向覆盖
 
 ![image-20190311113836192](./image/dfn.png)
 
-```
+```html
 5. <address>
 <address>
 Written by Julie.<br> 
@@ -465,7 +488,7 @@ China
 
 1. 外部样式表：样式需要被应用到很多页面
 
-```
+```html
 <head>
 <link rel="stylesheet" type="text/css" href="mystyle.css">
 </head>
@@ -473,7 +496,7 @@ China
 
 2. 内部样式表：单个文件需要特别样式
 
-```
+```html
 <head>
 <style type="text/css">
 body {background-color:red}
@@ -484,7 +507,7 @@ p {margin-left:20px}
 
 3. 内联样式表：特殊的样式需要应用到个别元素
 
-```
+```html
 <p style="color:red;margin-left:20px">
 我是段落。
 </p>
@@ -501,23 +524,39 @@ p {margin-left:20px}
 
 **语法：**
 
-构成：选择器+一条或多条声明selector{declaration1;declaration2;...declarationN}
+![](./image/css-declaration.png)
 
-选择器：需要改变样式的HTML元素
+**构成：**选择器+一条或多条声明
 
-声明：属性+值（属性：设置的样式属性style attribute）
-
+```css
+selector {
+				 declaration1;
+				 declaration2;
+				 ...
+				 declarationN；
+}
 ```
-selector{property:value}
+
+**选择器：**需要改变样式的HTML元素
+
+**声明：**一个单独的规则。
+
+属性+值（属性：改变HTML元素样式的途径）
+
+```css
+selector {
+				 property:value；
+}
 ```
 
 例：将h1元素内文字定义为红色，字体大小设置为14像素。
 
+```css
+h1 {
+	 color: red;
+	 font-size: 14px;
+}
 ```
-h1{color:red;font-size:14px;}
-```
-
-
 
 **值的不同写法和单位：**
 
@@ -539,7 +578,9 @@ p{color:#f00;}
 2. 值为若干单词，需要加引号。
 
 ```
-p{font-family:"sans serif";}
+p {
+	font-family: "sans serif";
+}
 ```
 
 3. 多重声明之间用分号分隔，最后的声明末尾可不加分号，但此举好处在于增减声明时可减少出错可能性。
@@ -549,13 +590,146 @@ p{font-family:"sans serif";}
 
 
 
-**高级语法：**
+**多元素选择：**选择多种类型元素添加一组相同的样式，不用选择器逗号分隔。
 
-# 样式化文字
+```css
+p, li, h1 {
+  				color: red;
+}
+```
 
-# 样式化区块
 
-# CSS排版概述
+
+**不同类型的选择器：**
+
+下面是一些常用的选择器类型：
+
+| 选择器名称                           | 选择的内容                                                   | 示例                                                         |
+| :----------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
+| 元素选择器（也称作标签或类型选择器） | 所有指定类型的 HTML 元素                                     | `p` 选择 `<p>`                                               |
+| ID 选择器                            | 具有特定 ID 的元素（单一 HTML 页面中，每个 ID 只对应一个元素，一个元素只对应一个 ID） | `#my-id` 选择 `<p id="my-id">`或 `<a id="my-id">`            |
+| 类选择器                             | 具有特定类的元素（单一页面中，一个类可以有多个实例）         | `.my-class` 选择 `<p class="my-class">` 和 `<a class="my-class">` |
+| 属性选择器                           | 拥有特定属性的元素                                           | `img[src]` 选择 `<img src="myimage.png">`而不是 `<img>`      |
+| 伪（Pseudo）类选择器                 | 特定状态下的特定元素（比如鼠标指针悬停）                     | `a:hover` 仅在鼠标指针悬停在链接上时选择 `<a>`。             |
+
+
+
+**字体和文本**
+
+从网页上下载Open Sans字体，从而在CSS中对HTML元素应用。
+
+```php+HTML
+<link href="https://fonts.font.im/css?family=Open+Sans" rel="stylesheet" type="text/css">
+```
+
+```css
+html {
+  /* px 表示 “像素（pixels）”: 基础字号为 10 像素 */
+  font-size: 10px; 
+  /* Google fonts 输出的 CSS */
+  font-family: 'Open Sans', sans-serif; 
+}
+```
+
+CSS中注释使用`/* */`，不可嵌套，不接受`//`注释。
+
+
+
+**一切皆盒子**
+
+CSS 布局主要就是基于盒模型的。每个占据页面空间的块都有这样的属性：
+
+1. `padding`：即内边距，围绕着内容（比如段落）的空间。
+
+2. `border`：即边框，紧接着内边距的线。
+
+3. `margin`：即外边距，围绕元素外部的空间。
+
+![](./image/box-model.png)
+
+此外，还可以使用：
+
+`width` ：元素的宽度
+
+`background-color` ：元素内容和内边距底下的颜色
+
+`color` ：元素内容（通常是文本）的颜色
+
+`text-shadow` ：为元素内的文本设置阴影
+
+`display` ：设置元素的显示模式
+
+
+
+**文档体格式设置**
+
+```css
+body {
+  width: 600px;
+  margin: 0 auto;
+  background-color: #FF9500;
+  padding: 0 20px 20px 20px;
+  border: 5px solid black;
+}
+```
+
+1. `width: 600px;` —— 强制页面永远保持 600 像素宽。
+
+2. `margin: 0 auto;` —— 为 `margin` 或 `padding` 等属性设置两个值时，第一个值代表元素的上方**和**下方（在这个例子中设置为 `0`），而第二个值代表左边**和**右边（在这里，`auto` 是一个特殊的值，意思是**水平方向上左右对称**）。
+
+   `auto`：浏览器自动应用一个合适的margin。它可以将一个块居中。比如，div { width:50%;  margin:0 auto; } 会把这个div容器水平居中。
+
+- 只有一个值时，这个值会被指定给全部的**四个边**.
+- 两个值时，第一个值被匹配给**上和下**, 第二个值被匹配给**左和右**.
+- 三个值时，第一个值被匹配给**上**, 第二个值被匹配给**左和右**, 第三个值被匹配给**下**.
+- 四个值时，会依次按**上、右、下、左**的顺序匹配 (即顺时针顺序).
+
+3. `background-color: #FF9500;` —— 如前文所述，指定元素的背景颜色。我们给 body 用了一种略微偏红的橘色以与深蓝色的\<html>元素形成反差，你也可以尝试其它颜色。
+
+4. `padding: 0 20px 20px 20px;` —— 我们给内边距设置了四个值来让内容四周产生一点空间。这一次我们不设置上方的内边距，设置右边，下方，左边的内边距为20像素。值以上、右、下、左的顺序排列。
+
+5. `border: 5px solid black;` —— 直接为 body 设置 5 像素的黑色实线边框。
+
+
+
+**给页面主标题添加样式**
+
+在没有任何 CSS 的情况下，浏览器给\<h1>等元素设置一些**默认样式**，页面顶部会产生缝隙，可以用过设置`margin: 0;`覆盖掉。
+
+```css
+h1 {
+  margin: 0;
+  padding: 20px 0;    
+  color: #00539F;
+  text-shadow: 3px 3px 1px black;
+}
+```
+
+text-shadow：设置阴影
+
+- 第一个值设置**水平偏移值** —— 即阴影右移的像素数（负值左移）。
+- 第二个值设置**垂直偏移值** —— 即阴影下移的像素数（负值上移）。
+- 第三个值设置阴影的**模糊半径** —— 值越大产生的阴影越模糊。
+- 第四个值设置阴影的基色。
+
+
+
+**图像居中**
+
+```css
+img {
+  display: block;
+  margin: 0 auto;
+}
+```
+
+
+
+# Javascript
+
+## Javascript概述
+
+
 
 
 
@@ -802,3 +976,159 @@ ubuntu server16.01.1 LTS 64位 Apache
 
 通过ftp上传之后，在命令行敲`sudo mv ~/h1/index.html /var/www/html`
 
+
+
+**UTF-8 BOM头**：
+
+BOM(byte order mark)：为UTF-16和UTF-32准备的，用于标记字节序(byte order)。
+
+「UTF-8」和「带 BOM 的 UTF-8」的区别就是有没有 BOM，即文件开头有没有 U+FEFF。通常BOM是用来标示Unicode纯文本字节流的，让文本处理程序识别txt文件是哪个Unicode编码（UTF-8，UTF-16BE，UTF-16LE）。UTF-8不需要BOM，所以不含BOM的UTF-8才是标准形式。HTML有charset属性，XML有encoding属性，没必要拉BOM撑场面。
+
+
+
+# Mac端安装Django
+
+**Advantages of Django Framework**
+
+- Ridiculously fast.
+- Reassuringly secure.
+- Exceedingly scalable.
+- Incredibly versatile.
+- Fully loaded.
+
+**Step 1: Install Python on Mac.**
+
+Python is already installed on brand new Mac, but its version is old. So what we do is to install the latest version of python using **homebrew**
+
+```
+brew install python3
+```
+
+After it will complete the installation, you will type the following command to check the version. First type **python3** in your terminal. Since **MacOS X** has already python installed, we cannot uninstall the old version because otherwise the Python 2 supported programmes will be stopped and we need to reinstall the mac. So we need to type python3 instead of **python.**
+
+```
+python3
+```
+
+It will display the version, and now we can execute the python code. 
+
+Okay, so we have successfully installed the **python 3**. Now, to out from the python console, we need to type **exit().**
+
+**Step 2: Install Pip package management system.**
+
+**Pip** is the package management system used to install and manage software packages written in **Python**. Now, install it using the following command.
+
+```
+sudo easy_install pip
+```
+
+**Step 3: Install virtualenv for python.**
+
+Now, type this command in your terminal.
+
+```
+pip3 install virtualenv
+```
+
+Okay, after installing, we need to create the **virtual environment**. Now you will create this folder when you are putting your other projects. Mine is **desktop >> code** folder. So navigate to that and type the following command. In my case, My virtualenv folder name is **thanos**
+
+```
+virtualenv thanos
+```
+
+Okay, so it will install the required folders. Now, go into that folder.
+
+```
+cd thanos
+```
+
+Now, activate the virtual environment by typing the following command. Please Make sure you are in the virtual environment directory.
+
+```
+source bin/activate
+```
+
+You will see your terminal looks like below.
+
+![Create Virtual Environment in Python](image/Create-Virtual-Environment-in-Python.png)
+
+So, our virtual environment has been started. Now, this is the time to install the **Django Framework**.
+
+**Step 4: Install Django In Mac**
+
+Okay, now stay in that folder and install Django using the following command.
+
+```
+pip3 install django
+```
+
+It will download the Django project. Check the Django version using the following command.
+
+```
+python3 -m django --version
+```
+
+In our case, we have explicitly defined that we are installing 2.1.7. So it will display that version.
+
+**Step 5: Create the Django Project.**
+
+We need to install skeleton of the Django project. So type the following command.
+
+```
+django-admin startproject thanosback
+```
+
+Here, our project name is **thanosback**. Next, go into that folder.
+
+```
+cd thanosback
+```
+
+Finally, we have created the project. Now start the project server by typing the following command.
+
+```
+python manage.py runserver
+```
+
+![python django tutorial](image/python-django-tutorial.png)
+
+遇到报错：
+
+```
+You have 15 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions.
+Run 'python manage.py migrate' to apply them.
+```
+
+执行`python manage.py migrate`即可修复。
+
+It has started the development server, and we can access it via [localhost:8000](http://localhost:8000/)
+
+Navigate to the browser, and you will see the screen like this.
+
+![django rest framework tutorial](image/django-rest-framework-tutorial-1-1024x646.png)
+
+**Step 6: Open Django on Visual Studio Code.**
+
+This step is optional because if you are using **Visual Studio Code**, then it will be helpful to you. If you are using another IDE like **pycharm** or editor like **sublime text**, then you can skip this step. First, perform the following step.
+
+Install the Python extension
+
+Now, open our project in the visual studio code using the following command.
+
+```
+code .
+```
+
+Please make sure, you are at the root of the **thanosback** folder.
+
+You will get the folder structure like this.
+
+![django tutorial](image/django-tutorial-1024x761.png)
+
+Finally, **How To Install Django In Mac** tutorial is over. 
+
+其他参考资料：<https://www.jianshu.com/p/5632f0f99f7f>
+
+
+
+使用Django
