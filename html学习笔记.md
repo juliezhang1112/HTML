@@ -522,7 +522,7 @@ p {margin-left:20px}
 
 
 
-**语法：**
+## CSS语法
 
 ![](./image/css-declaration.png)
 
@@ -539,9 +539,13 @@ selector {
 
 **选择器：**需要改变样式的HTML元素
 
-**声明：**一个单独的规则。
+**声明：**一个单独的规则。使用美式拼写。
 
-属性+值（属性：改变HTML元素样式的途径）
+**声明块**：声明按块分组，每一组声明都用一对大括号包裹，每一个声明后必须用半角分号分隔。选择器加上声明块被称为**规则集**，通常简称**规则**。
+
+Note：块有时候可以嵌套，这种情况下，每一对括号必须逻辑上嵌套，和嵌套HTML标签方式相同。
+
+属性+值（属性：改变HTML元素样式的途径；属性和值都要区分大小写；用英文半角冒号隔开）
 
 ```css
 selector {
@@ -558,7 +562,7 @@ h1 {
 }
 ```
 
-**值的不同写法和单位：**
+值的不同写法和单位：
 
 - 使用十六进制颜色值、RGB值：
 
@@ -572,7 +576,7 @@ p{color:rgb(100%,0%,0%);}
 
 p{color:#f00;}
 
-**Note:** 
+Note: 
 
 1. 使用RGB百分比时，值为0也要写百分比符号，但尺寸为0像素则不需要加px单位。
 2. 值为若干单词，需要加引号。
@@ -590,7 +594,7 @@ p {
 
 
 
-**多元素选择：**选择多种类型元素添加一组相同的样式，不用选择器逗号分隔。
+**多元素选择：**选择多种类型元素添加一组相同的样式，选择器之间用逗号分隔。
 
 ```css
 p, li, h1 {
@@ -614,6 +618,50 @@ p, li, h1 {
 
 
 
+**层叠算法cascade algorithm**
+
+
+
+**CSS语句**
+
+除开css规则之之外，其他类型的块如下：
+
+1. @-规则：用于传递元数据、田间信息或其他描述性信息。它由@符号开始，紧跟着一个表明它是哪种规则的描述符，之后是这种规则的语法块，并最终由一个半角分号；结束。每种由描述符定义的@-规则，都有其特有的内部语法和语义。一些例子如下：
+
+- [`@charset`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/@charset) 和 [`@import`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/@import) （元数据）
+- [`@media`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/@media) 或 [`@document`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/@document) （条件信息，又被称为嵌套语句，见下方。)
+- [`@font-face`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/@font-face) （描述性信息）
+
+举例：
+
+```css
+@import 'custom.css';
+```
+
+该@规则向当前css导入其他css文件
+
+
+
+2. 嵌套语句，@规则的一种，它的语法是 CSS 规则的嵌套块，只有在特定条件匹配时才会应用到文档上。特定条件如下：
+   - [`@media`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/@media) 只有在运行浏览器的设备匹配其表达条件时才会应用该@-规则的内容；
+   - [`@supports`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/@supports) 只有浏览器确实支持被测功能时才会应用该@-规则的内容；
+   - [`@document`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/@document) 只有当前页面匹配一些条件时才会应用该@-规则的内容。
+
+举例：
+
+```css
+@media (min-width: 801px){
+  body{
+    margin: 0 auto;
+    width: 800px;
+  }
+}
+```
+
+
+
+
+
 **字体和文本**
 
 从网页上下载Open Sans字体，从而在CSS中对HTML元素应用。
@@ -632,6 +680,24 @@ html {
 ```
 
 CSS中注释使用`/* */`，不可嵌套，不接受`//`注释。
+
+
+
+- em：1 em 与当前元素的字体大小相同（一个大写字母M的宽度）。在 CSS 样式被应用之前，浏览器给网页设置的默认基础字体大小是 16 像素，也就是说 1 em 的计算值默认为 16 像素。但是 em 单位是会继承父元素的字体大小，所以如果在父元素上设置了不同的字体大小，em 的像素值就会变得复杂。em 是 Web 开发中最常用的相对单位。
+- rem（root em）：（root em）和 em 以同样的方式工作，但它总是等于默认基础字体大小的尺寸；继承的字体大小将不起作用，但是在旧版本的IE上不被支持
+
+**CSS实际如何工作？**
+
+两个阶段处理文档：
+
+1. 浏览器将HTML和CSS转化成DOM（*文档对象模型*）。DOM在计算机内存中表示文档。它把文档内容和其样式结合在一起。
+2. 浏览器显示 DOM 的内容。
+
+![rendering](./image/rendering.svg)
+
+**DOM**
+
+DOM是一种树形结构. 标记语言中的每个元素,属性,文本片段都变为一个DOM 节点。这些节点由它们与其它 DOM 节点的关系来定义。有的元素是某些子节点的父节点，且这些子节点有兄弟（节点）。
 
 
 
@@ -677,7 +743,7 @@ body {
 
 2. `margin: 0 auto;` —— 为 `margin` 或 `padding` 等属性设置两个值时，第一个值代表元素的上方**和**下方（在这个例子中设置为 `0`），而第二个值代表左边**和**右边（在这里，`auto` 是一个特殊的值，意思是**水平方向上左右对称**）。
 
-   `auto`：浏览器自动应用一个合适的margin。它可以将一个块居中。比如，div { width:50%;  margin:0 auto; } 会把这个div容器水平居中。
+   `auto`：浏览器自动应用一个合适的margin。它可以将一个块居中。比如，div { width:50%;  margin:0 auto; } 会把这个div容器**水平居中**。
 
 - 只有一个值时，这个值会被指定给全部的**四个边**.
 - 两个值时，第一个值被匹配给**上和下**, 第二个值被匹配给**左和右**.
@@ -722,6 +788,10 @@ img {
   margin: 0 auto;
 }
 ```
+
+使图像居中可以复用`margin:0 auto`，但是需要一点调整。\<body>是块级元素，所以会占据页面并且能够赋予外边距和其他边距值。而图片是内联元素，为了使图片有外边距，必须使用`display: block`给予其块级行为。
+
+**Note:** 以上假定所选图片小于页面宽度(600px)。更大的图片会溢出body并占据页面其他位置。要解决这个问题，可以使用图片编辑器减小图片宽度或者用css width属性的值限制图片大小。
 
 
 
@@ -1128,7 +1198,3 @@ You will get the folder structure like this.
 Finally, **How To Install Django In Mac** tutorial is over. 
 
 其他参考资料：<https://www.jianshu.com/p/5632f0f99f7f>
-
-
-
-使用Django
