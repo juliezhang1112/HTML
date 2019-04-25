@@ -1,3 +1,50 @@
+[git的奇淫技巧](<https://github.com/521xueweihan/git-tips>)
+
+## ssh密钥
+
+```
+查看ssh是否安装
+$ ssh -v
+usage: ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-b bind_address] [-c cipher_spec]
+           [-D [bind_address:]port] [-E log_file] [-e escape_char]
+           [-F configfile] [-I pkcs11] [-i identity_file]
+           [-J [user@]host[:port]] [-L address] [-l login_name] [-m mac_spec]
+           [-O ctl_cmd] [-o option] [-p port] [-Q query_option] [-R address]
+           [-S ctl_path] [-W host:port] [-w local_tun[:remote_tun]]
+           [user@]hostname [command]
+
+已安装，遂生成.ssh文件
+$ ssh-keygen
+Your identification has been saved in /Users/zhangjunlan/.ssh/id_rsa.
+Your public key has been saved in /Users/zhangjunlan/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:Rh+LgmAqx7jDnKyjaYNFjN6EYiWzw7/C7Kyzp5Li5Wo zhangjunlan@MacbookPro
+
+显示当前目录下所有文件和文件夹，包括隐藏的.和..等的详细信息
+$ ls -al
+total 24
+drwx------   6 zhangjunlan  staff   192  4 10 17:07 .
+drwxr-xr-x+ 57 zhangjunlan  staff  1824  4 10 11:17 ..
+-rw-------   1 zhangjunlan  staff  1675  4 10 17:07 id_rsa
+-rw-r--r--   1 zhangjunlan  staff   404  4 10 17:07 id_rsa.pub
+drwxr-xr-x   2 zhangjunlan  staff    64  4 10 16:36 key_backup
+-rw-r--r--   1 zhangjunlan  staff  1059  3  8 22:01 known_hosts
+
+打开公钥
+$ cat id_rsa.pub 
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDRXBM0jD7DMdq9NgQAq/b6h6kBF+GdUWOw4fG2U4EDz9CZbt4Xcr7ByKCIxtGbcJKH3pr0j5bdGoyaePdEc1peWkrBpjA3jpb+uzjkrsdMoyOrLbYPZI/mOOTEcS9S2gyPdLvy61Unx+oHw8DgjzweZwmFt8pm2dshAcFB1b8l2+C7OskEMZZ+rLAyYO3amXhIS5c/x8RoBRiWSmCTTfriNReRftW3eXIIZL7RovSwwaj8pluzTx7QTW3DT39Gs2eLJYiYrtEbfLV+HtY5r/ZmSB1oskJpY4FsZSXFHXeNo5hQLIvlivh7b62HScA3VLQVWME9Hgzb9kGNLkhL5nGz zhangjunlan@MacbookPro
+```
+
+`ls`显示不隐藏的文件和文件夹
+
+`ls -a`显示当前目录下的**所有**文件和文件夹包括隐藏的.和..等
+
+`ls -l`显示不隐藏的文件和文件夹的**详细信息**
+
+`ls -al`显示当前目录下**所有**文件和文件夹，包括隐藏的.和..等的**详细信息**
+
+
+
 ```
 桌面上新建ss文件夹
 $ cd ss
@@ -20,7 +67,7 @@ $ git remote
 origin
 
 $ git branch
-\* dev
+* dev
 
 添加当前目录的所有文件到暂存区
 $ git add -A/git add .
@@ -63,7 +110,123 @@ https://blog.csdn.net/qq_38998213/article/details/81638810
 
 
 
-# Git使用
+## 廖雪峰教程
+
+1. 创建一个空目录
+
+```
+$ mkdir learngit
+$ cd learngit
+$ pwd
+/Users/zhangjunlan/learngit
+```
+
+2. 把目录变成git可以管理的仓库：`git init`
+
+```
+$ git init
+Initialized empty Git repository in /Users/zhangjunlan/learngit/.git/
+```
+
+当前目录下还多了一个`.git`的目录，这是Git用来跟踪管理版本库的，不要轻易修改里面的文件，改乱了会破坏Git仓库。这个目录默认是隐藏的，用`ls -ah`命令就可以看见。
+
+```
+$ ls -ah
+.		..		.git		readme.txt
+```
+
+3. 两步将文件添加到版本库
+
+```
+# 首先创建文件后放入learngit目录下
+
+# 将文件添加到暂存区
+$ git add readme.txt
+
+# 将文件提交到仓库，引号内是提交的说明。
+$ git commit -m "wrote a readme file"
+```
+
+git add可多次使用，添加多个文件，再用commit添加到仓库。
+
+4. 管理文件版本
+
+修改readme.txt后运行`git status`查看仓库当前状态：
+
+```
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   readme.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+查看具体修改内容：`git diff`
+
+```
+$ git diff readme.txt
+diff --git a/readme.txt b/readme.txt
+index d8036c1..5fbfb0d 100644
+--- a/readme.txt
++++ b/readme.txt
+@@ -1,2 +1,2 @@
+-Git is a version control system.
++Git is a distribute version control system.
+ Git is free software.
+\ No newline at end of file
+```
+
+两步提交修改
+
+```
+$ git add readme.txt
+
+# commit之前检查仓库状态
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   readme.txt
+
+$ git commit -m "add distributed"
+[master 4200e78] add distributed
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ 
+# 查看状态：当前没有需要提交的修改，并且工作目录是干净的
+$ git status
+On branch master
+nothing to commit, working tree clean
+```
+
+查看版本历史记录(最近到最远的提交)：`git log`，简化信息可加上`--pretty=oneline`参数
+
+```
+$ git log --pretty=oneline
+1fd4e7e004123e82b82e71c60c4c6e47e17cdc0f (HEAD -> master) append GPL
+b0d7249abe9ced0ade780544dede6900f0821f86 add distributed
+b4cca8877c3ab24a70dcda13a74f934be25f4a2f wrote a readme file
+```
+
+`HEAD`表示当前版本，上一个版本是`HEAD^`,上上一个版本是`HEAD^^`
+
+`1fd4e7e004123e82b82e71c60c4c6e47e17cdc0f `是`commit id`版本号
+
+`git log --pretty=oneline`
+
+**区别：**
+
+`git log`查看所有提交过的版本信息(commit)，不能查看已经删除的commit记录。
+
+`git reflog`查看本地仓库创建之日起，本地所有与项目更改有关的操作。所有分支的所有操作记录(包括clone，commit和reset操作，已经被删除的commit记录)
+
+
+
+## Git手册
 
 workspace: 工作区
 
@@ -73,7 +236,7 @@ repository: 仓库区(本地仓库)
 
 remote: 远程仓库
 
-![bg2015120901](./image/bg2015120901.png)
+![bg2015120901](assets/bg2015120901.png)
 
 ## 新建代码库
 
@@ -234,161 +397,6 @@ $ git checkout .
 
 
 
-
-1. 创建一个空目录
-
-```
-$ mkdir learngit
-$ cd learngit
-$ pwd
-/Users/zhangjunlan/learngit
-```
-
-2. 把目录变成git可以管理的仓库：`git init`
-
-```
-$ git init
-Initialized empty Git repository in /Users/zhangjunlan/learngit/.git/
-```
-
-当前目录下还多了一个`.git`的目录，这是Git用来跟踪管理版本库的，不要轻易修改里面的文件，改乱了会破坏Git仓库。这个目录默认是隐藏的，用`ls -ah`命令就可以看见。
-
-```
-$ ls -ah
-.		..		.git		readme.txt
-```
-
-3. 两步将文件添加到版本库
-
-```
-# 首先创建文件后放入learngit目录下
-
-# 将文件添加到暂存区
-$ git add readme.txt
-
-# 将文件提交到仓库，引号内是提交的说明。
-$ git commit -m "wrote a readme file"
-```
-
-git add可多次使用，添加多个文件，再用commit添加到仓库。
-
-4. 管理文件版本
-
-修改readme.txt后运行`git status`查看仓库当前状态：
-
-```
-$ git status
-On branch master
-Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git checkout -- <file>..." to discard changes in working directory)
-
-	modified:   readme.txt
-
-no changes added to commit (use "git add" and/or "git commit -a")
-```
-
-查看具体修改内容：`git diff`
-
-```
-$ git diff readme.txt
-diff --git a/readme.txt b/readme.txt
-index d8036c1..5fbfb0d 100644
---- a/readme.txt
-+++ b/readme.txt
-@@ -1,2 +1,2 @@
--Git is a version control system.
-+Git is a distribute version control system.
- Git is free software.
-\ No newline at end of file
-```
-
-两步提交修改
-
-```
-$ git add readme.txt
-
-# commit之前检查仓库状态
-$ git status
-On branch master
-Changes to be committed:
-  (use "git reset HEAD <file>..." to unstage)
-
-	modified:   readme.txt
-
-$ git commit -m "add distributed"
-[master 4200e78] add distributed
- 1 file changed, 1 insertion(+), 1 deletion(-)
- 
-# 查看状态：当前没有需要提交的修改，并且工作目录是干净的
-$ git status
-On branch master
-nothing to commit, working tree clean
-```
-
-查看版本历史记录(最近到最远的提交)：`git log`，简化信息可加上`--pretty=oneline`参数
-
-```
-$ git log --pretty=oneline
-1fd4e7e004123e82b82e71c60c4c6e47e17cdc0f (HEAD -> master) append GPL
-b0d7249abe9ced0ade780544dede6900f0821f86 add distributed
-b4cca8877c3ab24a70dcda13a74f934be25f4a2f wrote a readme file
-```
-
-`HEAD`表示当前版本，上一个版本是`HEAD^`,上上一个版本是`HEAD^^`
-
-`git log --pretty=oneline`
-
-**区别：**
-
-`git log`查看所有提交过的版本信息(commit)，不能查看已经删除的commit记录。
-
-`git reflog`查看本地仓库创建之日起，本地所有与项目更改有关的操作。所有分支的所有操作记录(包括clone，commit和reset操作，已经被删除的commit记录)
-
-
-
-# ssh密钥
-
-```
-查看ssh是否安装
-$ ssh -v
-usage: ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-b bind_address] [-c cipher_spec]
-           [-D [bind_address:]port] [-E log_file] [-e escape_char]
-           [-F configfile] [-I pkcs11] [-i identity_file]
-           [-J [user@]host[:port]] [-L address] [-l login_name] [-m mac_spec]
-           [-O ctl_cmd] [-o option] [-p port] [-Q query_option] [-R address]
-           [-S ctl_path] [-W host:port] [-w local_tun[:remote_tun]]
-           [user@]hostname [command]
-
-已安装，遂生成.ssh文件
-$ ssh-keygen
-Your identification has been saved in /Users/zhangjunlan/.ssh/id_rsa.
-Your public key has been saved in /Users/zhangjunlan/.ssh/id_rsa.pub.
-The key fingerprint is:
-SHA256:Rh+LgmAqx7jDnKyjaYNFjN6EYiWzw7/C7Kyzp5Li5Wo zhangjunlan@MacbookPro
-
-显示当前目录下所有文件和文件夹，包括隐藏的.和..等的详细信息
-$ ls -al
-total 24
-drwx------   6 zhangjunlan  staff   192  4 10 17:07 .
-drwxr-xr-x+ 57 zhangjunlan  staff  1824  4 10 11:17 ..
--rw-------   1 zhangjunlan  staff  1675  4 10 17:07 id_rsa
--rw-r--r--   1 zhangjunlan  staff   404  4 10 17:07 id_rsa.pub
-drwxr-xr-x   2 zhangjunlan  staff    64  4 10 16:36 key_backup
--rw-r--r--   1 zhangjunlan  staff  1059  3  8 22:01 known_hosts
-
-打开公钥
-$ cat id_rsa.pub 
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDRXBM0jD7DMdq9NgQAq/b6h6kBF+GdUWOw4fG2U4EDz9CZbt4Xcr7ByKCIxtGbcJKH3pr0j5bdGoyaePdEc1peWkrBpjA3jpb+uzjkrsdMoyOrLbYPZI/mOOTEcS9S2gyPdLvy61Unx+oHw8DgjzweZwmFt8pm2dshAcFB1b8l2+C7OskEMZZ+rLAyYO3amXhIS5c/x8RoBRiWSmCTTfriNReRftW3eXIIZL7RovSwwaj8pluzTx7QTW3DT39Gs2eLJYiYrtEbfLV+HtY5r/ZmSB1oskJpY4FsZSXFHXeNo5hQLIvlivh7b62HScA3VLQVWME9Hgzb9kGNLkhL5nGz zhangjunlan@MacbookPro
-```
-
-`ls`显示不隐藏的文件和文件夹
-
-`ls -a`显示当前目录下的**所有**文件和文件夹包括隐藏的.和..等
-
-`ls -l`显示不隐藏的文件和文件夹的**详细信息**
-
-`ls -al`显示当前目录下**所有**文件和文件夹，包括隐藏的.和..等的**详细信息**
 
 
 

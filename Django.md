@@ -62,7 +62,7 @@ source bin/activate
 
 You will see your terminal looks like below.
 
-![Create Virtual Environment in Python](/Users/zhangjunlan/Documents/GitHub/html/image/Create-Virtual-Environment-in-Python.png)
+![Create Virtual Environment in Python](assets/Create-Virtual-Environment-in-Python.png)
 
 So, our virtual environment has been started. Now, this is the time to install the **Django Framework**.
 
@@ -102,7 +102,7 @@ Finally, we have created the project. Now start the project server by typing the
 python manage.py runserver
 ```
 
-![python django tutorial](/Users/zhangjunlan/Documents/GitHub/html/image/python-django-tutorial.png)
+![python django tutorial](assets/python-django-tutorial.png)
 
 遇到报错：
 
@@ -117,7 +117,7 @@ It has started the development server, and we can access it via [localhost:8000]
 
 Navigate to the browser, and you will see the screen like this.
 
-![django rest framework tutorial](/Users/zhangjunlan/Documents/GitHub/html/image/django-rest-framework-tutorial-1-1024x646.png)
+![django rest framework tutorial](assets/django-rest-framework-tutorial-1-1024x646.png)
 
 **Step 6: Open Django on Visual Studio Code.**
 
@@ -135,8 +135,9 @@ Please make sure, you are at the root of the **thanosback** folder.
 
 You will get the folder structure like this.
 
-![django tutorial](/Users/zhangjunlan/Documents/GitHub/html/image/django-tutorial-1024x761.png)
+![django tutorial](assets/django-tutorial-1024x761.png)
 
 Finally, **How To Install Django In Mac** tutorial is over. 
 
 其他参考资料：<https://www.jianshu.com/p/5632f0f99f7f>
+

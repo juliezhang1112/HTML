@@ -10,7 +10,7 @@ HTML 不是一种编程语言，而是一种标记语言(markup language)，标�
 
 HTML 元素指的是从开始标签（start tag）到结束标签（end tag）的所有代码。
 
-![](image/element.png)
+![](assets/element.png)
 
 **语法：**
 
@@ -154,11 +154,11 @@ keywords: 为文档定义一组关键字，某些搜索引擎在遇到这些关�
 
 该meta标签作用：让当前viewpoint的宽度等于移动设备的宽度，同时不允许用户手动缩放，否则就会出现横向滚动条。
 
-![layout viewpoint](./image/layout viewpoint.png)
+![layout viewpoint](assets/layout viewpoint.png)
 
 <center><em>layout viewpoint</em></center>
 
-![visual viewpoint](./image/visual viewpoint.png)
+![visual viewpoint](assets/visual viewpoint.png)
 
 <center><em>visual viewpoint</em></center>
 
@@ -169,9 +169,9 @@ keywords: 为文档定义一组关键字，某些搜索引擎在遇到这些关�
 
 理想情况：一段14px的文字、图片无论是在何种密度屏幕，何种分辨率下，显示出来的大小都差不多。ideal viewport没有一个固定的尺寸，不同的设备各不相同。所有的iphone的ideal viewport宽度都是320px，无论屏幕宽度是320还是640，也就是说，在iphone中，css中的320px就代表iphone屏幕的宽度。
 
-![](./image/320px.png)
+![](assets/320px.png)
 
-![](./image/640px.png)
+![](assets/640px.png)
 
 
 
@@ -356,7 +356,7 @@ This text contains
 <var>computer variable变量</var>
 ```
 
-![image-20190310210406293](./image/code.png)
+![image-20190310210406293](assets/code.png)
 
 **地址：**
 
@@ -444,7 +444,7 @@ bi-directional override(bdo)双流向覆盖
 
 效果：
 
-![image-20190311113836192](./image/dfn.png)
+![image-20190311113836192](assets/dfn.png)
 
 ```html
 5. <address>
@@ -524,7 +524,7 @@ p {margin-left:20px}
 
 ## CSS语法
 
-![](./image/css-declaration.png)
+![](assets/css-declaration.png)
 
 **构成：**选择器+一条或多条声明
 
@@ -693,7 +693,7 @@ CSS中注释使用`/* */`，不可嵌套，不接受`//`注释。
 1. 浏览器将HTML和CSS转化成DOM（*文档对象模型*）。DOM在计算机内存中表示文档。它把文档内容和其样式结合在一起。
 2. 浏览器显示 DOM 的内容。
 
-![rendering](./image/rendering.svg)
+![rendering](assets/rendering.svg)
 
 **DOM**
 
@@ -711,7 +711,7 @@ CSS 布局主要就是基于盒模型的。每个占据页面空间的块都有�
 
 3. `margin`：即外边距，围绕元素外部的空间。
 
-![](./image/box-model.png)
+![](assets/box-model.png)
 
 此外，还可以使用：
 
