@@ -212,11 +212,21 @@ b0d7249abe9ced0ade780544dede6900f0821f86 add distributed
 b4cca8877c3ab24a70dcda13a74f934be25f4a2f wrote a readme file
 ```
 
-`HEAD`表示当前版本，上一个版本是`HEAD^`,上上一个版本是`HEAD^^`
+`HEAD`指向的版本就是当前版本，上一个版本是`HEAD^`,上上一个版本是`HEAD^^`,往上100个版本写成`HEAD-100`。`1fd4e7e004123e82b82e71c60c4c6e47e17cdc0f `是`commit id`(版本号)。
 
-`1fd4e7e004123e82b82e71c60c4c6e47e17cdc0f `是`commit id`版本号
+使用`git reset`命令把当前版本`append GPL`回退到`add distributed`
 
-`git log --pretty=oneline`
+```
+$ git reset --hard HEAD^
+
+查看readme.txt版本，果然被还原了。
+$ cat readme.txt
+
+此刻查看版本库已经看不到append GPL的版本了，如果命令行没有被关掉，就可以通过commit id回到未来的某个版本。版本号只需写前几位即可，git会自动去找。
+$ git reset --hard 1fd4e
+如果关掉电脑之后找不到commit id，就通过git reflog查找。
+$ git reflog
+```
 
 **区别：**
 
@@ -226,19 +236,26 @@ b4cca8877c3ab24a70dcda13a74f934be25f4a2f wrote a readme file
 
 
 
-## Git手册
-
-workspace: 工作区
-
-index/stage：暂存区
-
-repository: 仓库区(本地仓库)
-
-remote: 远程仓库
-
 ![bg2015120901](assets/bg2015120901.png)
 
-## 新建代码库
+1. workspace: 工作区(你在电脑里可以看到的目录learngit)
+
+2. `.git`：版本库(隐藏目录)，包括：
+
+   index/stage：暂存区
+
+   git自动创建的第一个分支`master`以及指向master的一个指针`HEAD`
+
+3. repository: 仓库区(本地仓库)
+
+4. remote: 远程仓库
+
+
+
+
+## Git手册
+
+### 新建代码库
 
 ```
 当前目录新建一个git代码库
@@ -251,7 +268,7 @@ $ git init [project-name]
 $ git clone [url]
 ```
 
-## 配置
+### 配置
 
 git的配置文件是.gitconfig，可以在用户主目录下(全局配置)，也可以在项目目录下(项目配置)。
 
@@ -267,7 +284,7 @@ $ git config[--global] user.name "[name]"
 $ git config[--global] user.email "[email address]"
 ```
 
-## 增加删除文件
+### 增加删除文件
 
 ```
 添加文件到暂存区
@@ -287,7 +304,7 @@ $ git add -p
 $ git rm [file1] [file2]
 ```
 
-## 代码提交
+### 代码提交
 
 ```
 提交暂存区到仓库区
@@ -303,7 +320,7 @@ $ git commit -a
 $ git commit -v
 ```
 
-## 分支
+### 分支
 
 ```
 列出本地所有分支
@@ -337,7 +354,7 @@ $ git push origin --delete [branch-name]
 $ git branch -dr [remote-branch]
 ```
 
-## 查看信息
+### 查看信息
 
 ```
 显示有变更的文件
@@ -350,7 +367,7 @@ $ git log
 $ git log --stat
 ```
 
-## 远程同步
+### 远程同步
 
 ```
 更新远程仓储
@@ -381,7 +398,7 @@ $ git push [remote] --force
 $ git push [remote] --all
 ```
 
-## 撤销
+### 撤销
 
 ```
 恢复暂存区的指定文件到工作区
