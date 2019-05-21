@@ -51,6 +51,7 @@ $ cd ss
 $ git clone git@codehub.devcloud.huaweicloud.com:ldrcglxtjxsl00001/ss_calendar.git
 Cloning into 'ss_calendar'...
 
+显示当前目录下所有文件和文件夹，包括隐藏的.和..等的详细信息
 $ ls -al
 total 0
 drwxr-xr-x   3 zhangjunlan  staff    96  4 10 17:57 .
@@ -58,16 +59,14 @@ drwx------+ 97 zhangjunlan  staff  3104  4 10 17:46 ..
 drwxr-xr-x  17 zhangjunlan  staff   544  4 10 17:57 ss_calendar
 
 $ cd ss_calendar
+$ git status
 
-显示当前目录下所有文件和文件夹，包括隐藏的.和..等的详细信息
-$ ls -al
+创建并切换到本地分支zjl（HEAD指针指向了zjl分支）
+$ git checkout -b zjl
 
 查看关联的远程仓库
 $ git remote
 origin
-
-$ git branch
-* dev
 
 添加当前目录的所有文件到暂存区
 $ git add -A/git add .
@@ -75,8 +74,23 @@ $ git add -A/git add .
 提交文件到仓库区
 $ git commit -m "update"
 
+$ git branch
+  dev
+* zjl
+
+切换到dev分支
+$ git checkout dev
+
+将zjl合并到dev分支
+$ git merge zjl
+
+上传文件到远程仓库
+git push [远程主机名] [本地分支名]
+$ git push origin dev
+push成功
+
 fetch下载远程仓库所有变动
-将远程仓库的dev分支克隆下来，在本地建立为temp分支
+(将远程仓库的dev分支克隆下来，在本地建立为temp分支)
 $ git fetch origin dev:temp
 
 将temp分支和本地dev分支合并
@@ -84,10 +98,7 @@ $ git merge temp
 
 在编辑器里注释修改信息
 
-上传文件到远程仓库
-git push [远程主机名] [本地分支名]
 $ git push origin dev
-push成功
 ```
 
 `rm -r ss_calendar/`可以删除仓库
