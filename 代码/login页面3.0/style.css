@@ -1,0 +1,74 @@
+body {
+    background: url(qiuzhang.jpg) no-repeat center top;
+    background-size: 1280px 675px;
+    background-size: cover;
+}
+
+.login {
+    background: #0c7fc2 url(login_bg.png) no-repeat center top;
+    display: block;
+    width: 30%;
+    margin: 0 auto;
+}
+
+form {
+    background: white;
+    box-shadow: 2px 1px 1px gray;
+    margin-top: 150px;
+    width: 500px;
+    height: 300px;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 2px;
+}
+
+form:before {
+    content: "";
+    display: inline-block;
+    height: 50%;
+    vertical-align: middle;
+}
+
+.control-group {
+    display: block;
+}
+
+.container {
+    margin: 0 auto;
+    display: inline-block;
+    vertical-align: middle;
+    width: 60%;
+}
+
+input {
+    border: white;
+    height: 30px;
+    display: block;
+    width: 100%;
+}
+
+.text {
+    padding-left: 10px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    border-bottom: #0c7fc2 1px solid;
+}
+
+.text:focus {
+    outline: none;
+    background-color: transparent;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+    text-align: left !important;
+}
+
+.submit {
+    margin-top: 30px;
+    color: white;
+    background: #0c7fc2;
+
+}
