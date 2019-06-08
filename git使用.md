@@ -1,3 +1,5 @@
+[TOC]
+
 [git的奇淫技巧](<https://github.com/521xueweihan/git-tips>)
 
 ## ssh密钥
@@ -123,6 +125,8 @@ https://blog.csdn.net/qq_38998213/article/details/81638810
 
 ## 廖雪峰教程
 
+### 创建版本库
+
 1. 创建一个空目录
 
 ```
@@ -214,6 +218,10 @@ On branch master
 nothing to commit, working tree clean
 ```
 
+### 时光机穿梭
+
+#### 版本回退
+
 查看版本历史记录(最近到最远的提交)：`git log`，简化信息可加上`--pretty=oneline`参数
 
 ```
@@ -245,6 +253,8 @@ $ git reflog
 
 `git reflog`查看本地仓库创建之日起，本地所有与项目更改有关的操作。所有分支的所有操作记录(包括clone，commit和reset操作，已经被删除的commit记录)
 
+#### 工作区和暂存区
+
 
 
 ![bg2015120901](assets/bg2015120901.png)
@@ -260,6 +270,54 @@ $ git reflog
 3. repository: 仓库区(本地仓库)
 
 4. remote: 远程仓库
+
+#### 管理修改https://www.liaoxuefeng.com/wiki/896043488029600/897884457270432
+
+#### 撤销修改
+
+#### 删除文件
+
+### 远程仓库
+
+#### 添加远程仓库
+
+#### 从远程库克隆
+
+### 分支管理
+
+#### 创建与合并分支
+
+#### 解决冲突
+
+#### 分支管理策略
+
+#### Bug分支
+
+#### Feature分支
+
+#### 多人协作
+
+#### Rebase
+
+### 标签管理
+
+#### 创建标签
+
+#### 操作标签
+
+### 使用Github
+
+### 使用码云
+
+### 自定义Git
+
+#### 忽略特殊文件
+
+#### 配置别名
+
+#### 搭建Git服务器
+
+
 
 
 

@@ -795,6 +795,122 @@ img {
 
 
 
+**Flex**
+
+source:https://www.cnblogs.com/qingchunshiguang/p/8011103.html
+
+> display:flex 是一种布局方式。它即可以应用于容器中，也可以应用于行内元素。是W3C提出的一种新的方案，可以简便、完整、响应式地实现各种页面布局。目前，它已经得到了所有浏览器的支持。
+
+> Flex是Flexible Box的缩写，意为"弹性布局"，用来为盒状模型提供最大的灵活性。设为Flex布局以后，子元素的float、clear和vertical-align属性将失效。
+
+采用Flex布局的元素，被称为Flex容器(flex container)，简称“容器”。其所有子元素自动成为容器成员，成为Flex项目(Flex item)，简称“项目”。
+
+![1679823-6ea441649bdf542a](../%E4%BA%92%E8%81%94%E7%BD%91%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/assets/1679823-6ea441649bdf542a.png)
+
+容器默认存在两根主轴：水平方向主轴(main axis)和垂直方向交叉轴(cross axis)，默认项目按主轴排列。
+
+- main start/main end：主轴开始位置/结束位置；
+- cross start/cross end：交叉轴开始位置/结束位置；
+- main size/cross size：单个项目占据主轴/交叉轴的空间
+
+
+
+### login页面2.0
+
+```
+body {
+    background-size: 100%;#详细见下
+    background: gainsboro no-repeat;
+    font-family: "Courier 10 Pitch", serif;
+}
+
+.login {
+    background: #0c7fc2 url(../images/login_bg.png) no-repeat center top;
+    display: block;
+    width: 40%;
+    margin: 0 auto;
+}
+
+form {
+    background: white;
+    box-shadow: 2px 1px 1px gray;
+    margin-top: 150px;
+    width: 500px;
+    height: 300px;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 2px;
+}
+
+form:before {
+    content: "";
+    display: inline-block;
+    height: 50%;
+    vetical-align: middle;
+}
+
+.control-group {
+    display: block;
+}
+
+.container {
+    margin: 0 auto;
+    display: inline-block;
+    vertical-align: middle;
+    width: 60%;
+}
+
+input {
+    border: white;
+    height: 30px;
+    display: block;
+    width: 100%;
+}
+
+.text {
+    padding-left: 10px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    border-bottom: #0c7fc2 1px solid;
+}
+
+.text:focus {
+    outline: none;
+    background-color: transparent;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+    text-align: left !important;
+}
+
+.submit {
+    margin-top: 30px;
+    color: white;
+    background: #0c7fc2;
+
+}
+```
+
+**background-size:contain; background-size:cover; background-size:100%;和background-size:100% 100%;的区别**
+
+```
+background-size: contain; ---缩小图片来适应元素的尺寸（保持像素的长宽比）；
+background-size: cover;---放大图片来填满元素容器，图片比例不变,多余的部分隐藏。
+background-size: 100% 100%;---按容器比例撑满，图片完整但是被挤压变形；
+background-size: 100%;---图片不一定完整，但是图片比例没有发生变化
+
+
+background-size:这个属性有两个值，第一个值为x轴方向的缩放比例或者px,第二个值为y轴方向的缩放比例或者px，如果只写一个值，则第二个值默认为auto(根据图片原来的比例，以及现有的宽度，来确定高度)
+比方说：你有一张长宽比例为4:3的图片，有一个width:100px;height:50px;的盒子(也就是长宽比例为2:1)。
+background-size:100% 100%;这种方式设置完背景图片的大小后，会完全铺满整个盒子，并且背景图片的比例会因此改变为2:1
+background-size:100%;这种方式设置的背景图片的大小,x轴会和盒子一样的宽，但是y轴由于默认为auto，根据上面的理论计算得背景图片的高度为300px,但是盒子只有50px高，超出的部分隐藏，所以这两种写法的效果自然就不一样啦。
+```
+
+### 
+
 # Javascript
 
 ## 闭包
@@ -860,7 +976,6 @@ Note：闭包是函数作用域的副产品，由于JS的**函数内部可以使
 BOM(byte order mark)：为UTF-16和UTF-32准备的，用于标记字节序(byte order)。
 
 「UTF-8」和「带 BOM 的 UTF-8」的区别就是有没有 BOM，即文件开头有没有 U+FEFF。通常BOM是用来标示Unicode纯文本字节流的，让文本处理程序识别txt文件是哪个Unicode编码（UTF-8，UTF-16BE，UTF-16LE）。UTF-8不需要BOM，所以不含BOM的UTF-8才是标准形式。HTML有charset属性，XML有encoding属性，没必要拉BOM撑场面。
-
 
 
 
