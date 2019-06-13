@@ -43,7 +43,7 @@ class Position extends Model
             $message = '职位名称不能大于30个字符';
             return ['message' => $message];
         }
-        if(!preg_match('/^[\x{4e00}-\x{9fa5}A-Za-z0-9_]+$/u',$name)){
+        if(!preg_match('/^[\x{4e00}-\x{9fa5}A-Za-z0-9_（）()]+$/u',$name)){
             #如果输入包含标点符号字符
             $message = '职位名称中不能包含标点符号';
             return ['message' => $message];
@@ -93,7 +93,7 @@ class Position extends Model
      */
     public function insertPosition($name)
     {
-        $data = ['name' => $name, 'is_delete' => 0];
+        $data = ['name' => $name];//, 'is_delete' => 0];
         $result = Db::name('user_position')->insert($data);
         return $result;
     }
@@ -101,7 +101,7 @@ class Position extends Model
     {
         $positionName = Db::name('user_position')
             ->where('name', $name)
-            ->where('is_delete', 0)
+            //->where('is_delete', 0)
             ->find();
         return $positionName;
     }
