@@ -482,6 +482,30 @@ $ git checkout .
 
 
 
+### 错误提交到git远端master如何回滚
+
+1. copy一份本地项目
+2. 进入项目根目录，切换到master分支
+
+```
+git branch
+git checkout master
+```
+
+3. 找到github项目所在的master分支，确定需要回退的版本id号
+
+```
+git reset --hard [需要回退的版本id号]
+```
+
+4. 提示版本落后于分支，此时执行强制提交命令
+
+```
+git push -f origin master
+```
+
+如果报错，需要关闭主分支master的保护，操作完成后，再开启主分支的保护机制。
+
 
 
 

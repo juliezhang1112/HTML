@@ -977,5 +977,3 @@ BOM(byte order mark)：为UTF-16和UTF-32准备的，用于标记字节序(byte 
 
 「UTF-8」和「带 BOM 的 UTF-8」的区别就是有没有 BOM，即文件开头有没有 U+FEFF。通常BOM是用来标示Unicode纯文本字节流的，让文本处理程序识别txt文件是哪个Unicode编码（UTF-8，UTF-16BE，UTF-16LE）。UTF-8不需要BOM，所以不含BOM的UTF-8才是标准形式。HTML有charset属性，XML有encoding属性，没必要拉BOM撑场面。
 
-
-
