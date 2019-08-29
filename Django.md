@@ -141,3 +141,4 @@ Finally, **How To Install Django In Mac** tutorial is over.
 
 其他参考资料：<https://www.jianshu.com/p/5632f0f99f7f>
 
+I just want to test if GitHub can show the changes that i made to this document in a clear way.
