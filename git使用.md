@@ -510,5 +510,31 @@ git push -f origin master
 
 
 
+### 如何消除：This branch is 23 commits ahead, 5 commits behind pingcap:master.以及下图中出现的一长串提交：
 
+![image-20191106103256539](assets/image-20191106103256539.png)
 
+1. cd 进入项目根目录，切换到 master 分支
+
+   ```bash
+   cd /Users/zhangjunlan/Documents/GitHub/docs
+   # 切换到 master 分支
+   git checkout master
+   ```
+
+2. 上游仓库 master 分支是最好的版本，所以将本地 master 分支强制和upstream master 同步
+
+   ```bash
+   # 从 upstream master 获取最新 HEAD
+   git fetch upstream
+   # 强制将当前 branch 与 upstream master 同步
+   git reset --hard upstream/master
+   ```
+
+3. 将本地 master 分支强制推至 remote
+
+   ```
+   git push -f origin master
+   ```
+
+最后可以看到：This branch is even with pingcap:master
